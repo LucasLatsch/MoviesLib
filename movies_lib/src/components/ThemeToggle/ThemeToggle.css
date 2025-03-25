@@ -1,0 +1,26 @@
+.theme-toggle {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  color: var(--text-dark);
+  padding: 0.3rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.theme-toggle:hover {
+  background-color: var(--secondary-color);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.sun,
+.moon {
+  color: var(--icon-color);
+}

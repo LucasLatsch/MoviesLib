@@ -1,0 +1,34 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 1em;
+}
+
+.pagination button {
+  background-color: var(--primary-color);
+  color: var(--text-dark);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.pagination button:hover {
+  background-color: var(--button-hover);
+}
+
+.pagination button:disabled {
+  background-color: var(--button-desabled);
+  cursor: not-allowed;
+}
+
+.pagination .page-number {
+  font-size: 1.2em;
+  color: var(--text-color);
+}

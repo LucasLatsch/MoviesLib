@@ -1,0 +1,99 @@
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+  background-color: var(--background-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+#navbar .logo {
+  background-color: var(--text-dark);
+  padding: 0.5rem;
+  font-size: 1.4em;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  color: var(--primary-color);
+}
+
+#navbar form {
+  display: flex;
+  gap: 1rem;
+}
+
+#navbar ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+#navbar .link {
+  font-size: 1.4em;
+  color: var(--text-color);
+  padding: 0.5em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#navbar .link:hover {
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+}
+
+.dark #navbar .link:hover {
+  background-color: var(--primary-color);
+  color: var(--text-dark);
+}
+
+#navbar .search-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#navbar input {
+  padding: 0.2rem 2rem;
+  border-radius: 4px;
+  border: none;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+#navbar form svg {
+  font-size: 1em;
+}
+
+#navbar input:focus,
+select:focus {
+  outline: none;
+}
+
+#navbar form button {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  color: var(--icon-color);
+  padding: 0.3rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.4s;
+}
+#navbar form button:hover {
+  background-color: var(--secondary-color);
+}
+
+.language-select {
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  color: var(--icon-color);
+}

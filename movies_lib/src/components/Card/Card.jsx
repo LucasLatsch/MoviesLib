@@ -52,8 +52,13 @@ const Card = ({ media, type, swiper = false }) => {
             </div>
           ) : (
             <div className="container-card">
-              <p>{mediaTitle}</p>
-              <p>{media.release_date}</p>
+              <p>
+                {mediaTitle} (
+                {new Date(media.release_date).getFullYear() ||
+                  new Date(media.first_air_date).getFullYear()}
+                )
+              </p>
+              <p>{media.tagline}</p>
             </div>
           )}
         </div>

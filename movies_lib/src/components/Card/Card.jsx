@@ -40,15 +40,7 @@ const Card = ({ media, type, swiper = false }) => {
         <div className="media-info">
           {type === "person" ? (
             <div className="container-card">
-              <p className="rating-tag">{mediaTitle}</p>
-              <p>
-                <strong>Conhecido por:</strong>
-              </p>
-              <ul>
-                {media.known_for.map((item) => (
-                  <li key={item.id}>{item.title || item.name}</li>
-                ))}
-              </ul>
+              <p>{media.original_name}</p>
             </div>
           ) : (
             <div className="container-card">
@@ -58,7 +50,6 @@ const Card = ({ media, type, swiper = false }) => {
                   new Date(media.first_air_date).getFullYear()}
                 )
               </p>
-              <p>{media.tagline}</p>
             </div>
           )}
         </div>

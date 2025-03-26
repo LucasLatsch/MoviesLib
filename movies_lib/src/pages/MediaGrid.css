@@ -8,3 +8,7 @@
 .title .query-text {
   color: var(--primary-color);
 }
+
+.media-carousel {
+  padding: 0 1em;
+}

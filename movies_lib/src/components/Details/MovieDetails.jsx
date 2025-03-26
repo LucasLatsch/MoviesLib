@@ -1,7 +1,7 @@
 import React from "react";
 import { SwiperSlide } from "swiper/react";
 import Card from "../Card/Card";
-import TimeRangeToggle from "../TimeRangeToggle/TimeRangeToggle";
+import TitleSection from "../TitleSection/TitleSection";
 import Carousel from "../Carousel/Carousel";
 import YouTubeVideo from "../YoutubeVideo/YouTubeVideo";
 import useFetchMediaDetails from "../../hooks/useFetchMediaDetails";
@@ -78,11 +78,12 @@ const MovieDetails = ({ id }) => {
         </div>
       </div>
       <div className="trailer-container">
-        <p className="title border-line">Trailer</p>
+        <TitleSection title={"Trailer"} />
+
         <YouTubeVideo videoId={videos?.results[0]?.key} />
       </div>
       <div className="recommendations-container">
-        <TimeRangeToggle title={"movie"} toggle={false} />
+        <TitleSection title={"Recomendados"} />
         <Carousel slidesPerView={5} id={"trending-movies"}>
           {recommendations?.results.length === 0 && <p>Carregando...</p>}
           {recommendations?.results.map((media) => (

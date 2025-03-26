@@ -93,6 +93,17 @@
 }
 
 .trailer-container {
-  padding: 1em 0;
+  /* padding: 1em 0; */
   display: flexbox;
+  /* padding: 1em 0; */
+}
+
+.seasons-container {
+  /* padding: 1em 0; */
+}
+
+.season-card {
+  display: flex;
+  gap: 1em;
+  /* padding-top: 1em; */
 }

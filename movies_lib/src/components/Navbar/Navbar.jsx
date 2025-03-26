@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { BiCameraMovie, BiSearchAlt2 } from "react-icons/bi";
 
 import "./Navbar.css";
-import ThemeToggle from "../ThemeToggle/ThemeToggle";
+import ThemeToggle from "../Toggle/ThemeToggle";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const languageUrl = import.meta.env.VITE_API_LANGUAGE;

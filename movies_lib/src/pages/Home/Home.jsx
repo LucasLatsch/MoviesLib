@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 import Card from "../../components/Card/Card";
-import Carousel from "../../components/Carousel/Carousel"; // Importando o componente de carrossel
-import TimeRangeToggle from "../../components/TimeRangeToggle/TimeRangeToggle";
+import Carousel from "../../components/Carousel/Carousel";
+import TitleSection from "../../components/TitleSection/TitleSection";
 import { SwiperSlide } from "swiper/react";
 
 import "../MediaGrid.css";
@@ -40,11 +40,12 @@ const Home = () => {
 
   return (
     <div>
-      <div>
-        <TimeRangeToggle
+      <div className="media-carousel">
+        <TitleSection
           timeWindow={timeWindowMovies}
           setTimeWindow={setTimeWindowMovies}
-          title={"movie"}
+          title={"Filmes em alta"}
+          toggle={true}
         />
 
         <Carousel slidesPerView={5} id={"trending-movies"}>
@@ -56,11 +57,12 @@ const Home = () => {
           ))}
         </Carousel>
       </div>
-      <div>
-        <TimeRangeToggle
+      <div className="media-carousel">
+        <TitleSection
           timeWindow={timeWindowSeries}
           setTimeWindow={setTimeWindowSeries}
-          title={"TV"}
+          toggle={true}
+          title={"Em alta na TV"}
         />
         <Carousel slidesPerView={5} id={"trending-series"}>
           {trendingSeries.length === 0 && <p>Carregando...</p>}

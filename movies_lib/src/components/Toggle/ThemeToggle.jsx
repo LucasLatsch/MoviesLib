@@ -1,9 +1,9 @@
-import { useTheme } from "../../context/ThemeContext"; // Importando o contexto de tema
+import { useTheme } from "../../context/ThemeContext";
 import { HiSun, HiMoon } from "react-icons/hi";
-import "./ThemeToggle.css";
+import "./Toggle.css";
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme(); // Usando o contexto para pegar o tema e função de toggle
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <button onClick={toggleTheme} className="theme-toggle bx-shadow">

@@ -9,18 +9,14 @@ import {
 const Pagination = ({ page, setPage, totalPages }) => {
   return (
     <div className="pagination">
-      <button
-        onClick={() => setPage(1)}
-        disabled={page === 1}
-        className="first-page"
-      >
+      <button onClick={() => setPage(1)} disabled={page === 1} className="btn">
         <MdKeyboardDoubleArrowLeft />
       </button>
 
       <button
         onClick={() => setPage((prevPage) => Math.max(prevPage - 1, 1))}
         disabled={page === 1}
-        className="prev-page"
+        className="btn"
       >
         <MdKeyboardArrowLeft />
       </button>
@@ -32,7 +28,7 @@ const Pagination = ({ page, setPage, totalPages }) => {
           setPage((prevPage) => Math.min(prevPage + 1, totalPages))
         }
         disabled={page === totalPages}
-        className="next-page"
+        className="btn"
       >
         <MdKeyboardArrowRight />
       </button>
@@ -40,7 +36,7 @@ const Pagination = ({ page, setPage, totalPages }) => {
       <button
         onClick={() => setPage(totalPages)}
         disabled={page === totalPages}
-        className="last-page"
+        className="btn"
       >
         <MdKeyboardDoubleArrowRight />
       </button>

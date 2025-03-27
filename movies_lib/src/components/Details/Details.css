@@ -78,11 +78,6 @@
   border-radius: 4px;
   width: 3em;
 }
-/* 
-.production-container img {
-  border-radius: 4px;
-  width: 3em;
-} */
 
 .credits-container {
   display: flex;
@@ -93,17 +88,29 @@
 }
 
 .trailer-container {
-  /* padding: 1em 0; */
   display: flexbox;
-  /* padding: 1em 0; */
 }
 
-.seasons-container {
-  /* padding: 1em 0; */
+.season-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.season-container .season-buttons {
+  display: flex;
+  justify-content: start;
+  gap: 1em;
+  margin-bottom: 1em;
+  flex-wrap: wrap;
 }
 
 .season-card {
   display: flex;
+  justify-content: center;
   gap: 1em;
-  /* padding-top: 1em; */
+}
+
+.season-info-container {
+  display: flex;
+  gap: 0.5em;
 }

@@ -5,6 +5,7 @@ import Carousel from "../Carousel/Carousel";
 import YouTubeVideo from "../YoutubeVideo/YouTubeVideo";
 import useFetchMediaDetails from "../../hooks/useFetchMediaDetails";
 import TitleSection from "../TitleSection/TitleSection";
+import "./Details.css";
 
 const imageSrc = import.meta.env.VITE_IMG;
 
@@ -74,48 +75,54 @@ const TvDetails = ({ id }) => {
           </div>
         </div>
       </div>
-
-      {/* Dropdown de Seleção de Temporada */}
-      <div className="season-dropdown">
-        <TitleSection title={"Temporadas"} />
-        <select
-          id="season-select"
-          value={selectedSeason}
-          onChange={handleSeasonChange}
-        >
-          {media?.seasons.map((season, index) => (
-            <option key={season.id} value={index}>
-              {season.name}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Exibição da Temporada Selecionada */}
       <div className="season-container">
-        {media?.seasons[selectedSeason] && (
-          <div className="season-card">
-            <img
-              style={{ height: "20em" }}
-              src={imageSrc + media.seasons[selectedSeason].poster_path}
-              alt={media.seasons[selectedSeason].name}
-            />
-            <div className="season-info">
-              <p>{media.seasons[selectedSeason].name}</p>
-              <p>{media.seasons[selectedSeason].overview}</p>
-              <p>{media.seasons[selectedSeason].episode_count} Episódios</p>
-              <p>
-                {new Date(media.seasons[selectedSeason].air_date).getFullYear()}
-              </p>
+        <TitleSection title={"Temporadas"} />
+        <div className="season-buttons">
+          {media?.seasons.map((season, index) => (
+            <button
+              className="btn"
+              key={season.id}
+              onClick={handleSeasonChange}
+              value={index}
+              disabled={selectedSeason === index}
+            >
+              {season.name}
+            </button>
+          ))}
+        </div>
+        <div className="season-card">
+          {media?.seasons[selectedSeason] && (
+            <div className="season-info-container">
+              <img
+                style={{ height: "20em" }}
+                src={imageSrc + media.seasons[selectedSeason].poster_path}
+                alt={media.seasons[selectedSeason].name}
+              />
+              <div className="season-info">
+                <div className="season-header">
+                  <p className="title">{media.seasons[selectedSeason].name}</p>
+                  <p className="year">
+                    {new Date(
+                      media.seasons[selectedSeason].air_date
+                    ).getFullYear()}
+                  </p>
+                </div>
+                <p className="preview">
+                  {media.seasons[selectedSeason].overview}
+                </p>
+                <p className="episodes">
+                  {media.seasons[selectedSeason].episode_count} Episódios
+                </p>
 
-              {media.seasons[selectedSeason].vote_average !== 0 ? (
-                <p>{media.seasons[selectedSeason].vote_average}</p>
-              ) : (
-                <></>
-              )}
+                {media.seasons[selectedSeason].vote_average !== 0 ? (
+                  <p>{media.seasons[selectedSeason].vote_average}</p>
+                ) : (
+                  <></>
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       <div className="trailer-container">

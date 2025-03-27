@@ -1,7 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import MovieDetails from "../../components/Details/MovieDetails";
-import "./Details.css";
 import TvDetails from "../../components/Details/TvDetails";
 import PersonDetails from "../../components/Details/PersonDetails";
 

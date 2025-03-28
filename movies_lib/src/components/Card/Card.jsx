@@ -1,60 +1,100 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { FaStar } from "react-icons/fa";
-
 import StarRating from "../StarRating/StarRating";
-import Modal from "../Modal/Modal";
-
 import "./Card.css";
 
 const imageUrl = import.meta.env.VITE_IMG;
-const defaultImage = "/default-image.png"; // Defina uma imagem padrão no seu projeto
+const defaultImageP = "/assets/defaultImage.svg";
+const defaultImage = "/assets/defaultImage.jpg";
+
+const translateDepartment = (department) => {
+  const translations = {
+    Acting: "Ator/Atriz",
+    Directing: "Diretor/Diretora",
+    Writing: "Roteirista",
+    Production: "Produtor/Produtora",
+    Editing: "Editor/Editora",
+    Camera: "Cinematógrafo/Cinematógrafa",
+    Sound: "Designer de Som",
+    Art: "Diretor/Diretora de Arte",
+    "Costume & Make-Up": "Figurinista/Maquiador(a)",
+    "Visual Effects": "Artista de Efeitos Visuais",
+    Lighting: "Técnico/Técnica de Iluminação",
+    Crew: "Membro da Equipe Técnica",
+  };
+  return translations[department] || department;
+};
+
+const getMediaInfo = (media, type) => {
+  switch (type) {
+    case "movie":
+      return {
+        title: media.title,
+        image: media.poster_path ? imageUrl + media.poster_path : defaultImage,
+        date: media.release_date,
+        knownForDepartment: null,
+      };
+    case "tv":
+      return {
+        title: media.name,
+        image: media.poster_path ? imageUrl + media.poster_path : defaultImage,
+        date: media.first_air_date,
+        knownForDepartment: null,
+      };
+    case "person":
+      return {
+        title: media.original_name,
+        image: media.profile_path
+          ? imageUrl + media.profile_path
+          : defaultImageP,
+        date: null,
+        knownForDepartment: translateDepartment(media.known_for_department),
+      };
+    default:
+      return {
+        title: "Unknown",
+        image: null,
+        date: null,
+        knownForDepartment: null,
+      };
+  }
+};
 
 const Card = ({ media, type, swiper = false }) => {
   const navigate = useNavigate();
-  const mediaTitle = type === "movie" ? media.title : media.name;
-  const mediaImage = type === "person" ? media.profile_path : media.poster_path;
-  const imageSrc = mediaImage ? imageUrl + mediaImage : defaultImage;
+  const { title, image, date, knownForDepartment } = getMediaInfo(media, type);
 
-  const handleCardClick = (id) => {
-    navigate(`/details/${type}/${id}`);
+  const handleCardClick = () => {
+    navigate(`/details/${type}/${media.id}`);
   };
 
   return (
-    <>
-      <div
-        className={swiper ? "media-card" : "media-card no-swiper"}
-        onClick={() => handleCardClick(media.id)}
-      >
-        {/* Selo de Avaliação */}
-        {type !== "person" && (
-          <div className="rating-tag">
-            <StarRating rating={media.vote_average} />
-            <span className="rating-number">{media.vote_average}</span>
-          </div>
-        )}
+    <div
+      className={`media-card ${swiper ? "" : "no-swiper"}`}
+      onClick={handleCardClick}
+    >
+      {type !== "person" && (
+        <div className="rating-tag">
+          <StarRating rating={media.vote_average} />
+          <span className="rating-number">{media.vote_average}</span>
+        </div>
+      )}
 
-        <img src={imageSrc} alt={mediaTitle} />
+      {type === "person" ? (
+        <img src={image} alt={title} />
+      ) : (
+        <img src={image} alt={title} />
+      )}
 
-        {/* Informações */}
-        <div className="media-info">
-          {type === "person" ? (
-            <div className="container-card">
-              <p>{media.original_name}</p>
-            </div>
-          ) : (
-            <div className="container-card">
-              <p>
-                {mediaTitle} (
-                {new Date(media.release_date).getFullYear() ||
-                  new Date(media.first_air_date).getFullYear()}
-                )
-              </p>
-            </div>
-          )}
+      <div className="media-info">
+        <div className="container-card">
+          <p>
+            {title}
+            {date && ` (${new Date(date).getFullYear()})`}
+          </p>
+          {knownForDepartment && <p>{knownForDepartment}</p>}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

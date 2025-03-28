@@ -29,7 +29,6 @@ const useFetchMediaList = (type, category, genre, page, language) => {
       } else if (type === "person") {
         const personURL = import.meta.env.VITE_API_PEOPLE;
         url = `${personURL}?${apiKey}&page=${page}&language=${language}`;
-        console.log(url);
       }
 
       try {

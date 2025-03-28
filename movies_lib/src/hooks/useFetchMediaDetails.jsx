@@ -42,11 +42,6 @@ const useFetchMediaDetails = (type, id) => {
         setProviders(providersRes.results?.BR || null);
         setRecommendations(recommendationsRes);
         setVideos(videosRes);
-        console.log(mediaRes);
-        console.log(creditsRes.cast);
-        console.log(providersRes.results?.BR);
-        console.log(recommendationsRes);
-        console.log(videosRes);
       } catch (error) {
         console.error("Erro ao buscar dados:", error);
       } finally {
@@ -55,6 +50,7 @@ const useFetchMediaDetails = (type, id) => {
     };
 
     fetchData();
+    window.scrollTo(0, 0);
   }, [type, id]);
 
   return { media, credits, providers, recommendations, videos, loading };

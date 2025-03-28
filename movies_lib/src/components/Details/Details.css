@@ -114,3 +114,27 @@
   display: flex;
   gap: 0.5em;
 }
+
+.galery .teste {
+  max-width: 100%;
+  transition: 1s;
+  min-height: 25.3rem;
+}
+
+.person-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  color: var(--text-color);
+}
+
+.person-info .title {
+  font-size: 3em;
+}
+
+.person-header {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+}

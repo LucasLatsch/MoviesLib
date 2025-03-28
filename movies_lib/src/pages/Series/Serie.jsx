@@ -5,7 +5,8 @@ import Filter from "../../components/Filter/Filter";
 import MediaList from "../../components/MediaList/MediaList";
 import Pagination from "../../components/Pagination/Pagination";
 
-import useFetchMediaList from "../../hooks/useFetchMediaList ";
+import useFetchMediaList from "../../hooks/useFetchMediaList";
+import Spinner from "../../components/Spinner/Spinner";
 
 const categories = JSON.parse(import.meta.env.VITE_TV_CATEGORIES);
 const genres = JSON.parse(import.meta.env.VITE_GENRES_TV);
@@ -23,6 +24,10 @@ const Serie = () => {
     page,
     language
   );
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <div className="container">

@@ -1,7 +1,8 @@
 import { React, useState, useEffect } from "react";
 import MediaList from "../../components/MediaList/MediaList";
 import Pagination from "../../components/Pagination/Pagination";
-import useFetchMediaList from "../../hooks/useFetchMediaList ";
+import useFetchMediaList from "../../hooks/useFetchMediaList";
+import Spinner from "../../components/Spinner/Spinner";
 
 const People = () => {
   const [page, setPage] = useState(1);
@@ -14,6 +15,10 @@ const People = () => {
     page,
     language
   );
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <div>

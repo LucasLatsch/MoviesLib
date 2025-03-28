@@ -4,13 +4,14 @@ import { BiCameraMovie, BiSearchAlt2 } from "react-icons/bi";
 
 import "./Navbar.css";
 import ThemeToggle from "../Toggle/ThemeToggle";
+import Spinner from "../Spinner/Spinner";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const languageUrl = import.meta.env.VITE_API_LANGUAGE;
 
 const Navbar = () => {
   const [search, setSearch] = useState("");
-  const [languages, setLanguages] = useState([]);
+  const [languages, setLanguages] = useState(["pt-BR"]);
   const [selectedLanguage, setSelectedLanguage] = useState("pt-BR");
   const navigate = useNavigate();
 
@@ -24,7 +25,6 @@ const Navbar = () => {
   const getLanguages = async (url) => {
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data);
     setLanguages(data);
   };
 

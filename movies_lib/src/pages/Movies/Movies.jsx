@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Filter from "../../components/Filter/Filter";
 import MediaList from "../../components/MediaList/MediaList";
 import Pagination from "../../components/Pagination/Pagination";
-import useFetchMediaList from "../../hooks/useFetchMediaList ";
+import useFetchMediaList from "../../hooks/useFetchMediaList";
+import Spinner from "../../components/Spinner/Spinner";
 
 const categories = JSON.parse(import.meta.env.VITE_MOVIE_CATEGORIES);
 const genres = JSON.parse(import.meta.env.VITE_GENRES_MOVIE);
@@ -22,7 +23,7 @@ const Movies = () => {
   );
 
   if (loading) {
-    return <p>Carregando...</p>;
+    return <Spinner />;
   }
 
   return (

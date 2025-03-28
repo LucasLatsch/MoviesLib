@@ -5,15 +5,24 @@ import TitleSection from "../TitleSection/TitleSection";
 import Carousel from "../Carousel/Carousel";
 import YouTubeVideo from "../YoutubeVideo/YouTubeVideo";
 import useFetchMediaDetails from "../../hooks/useFetchMediaDetails";
+import Spinner from "../Spinner/Spinner";
+import { useNavigate } from "react-router-dom";
 
 const imageSrc = import.meta.env.VITE_IMG;
 
+const defaultImage = "/assets/backImage.svg";
+
 const MovieDetails = ({ id }) => {
+  const navigate = useNavigate();
   const { media, credits, providers, recommendations, videos, loading } =
     useFetchMediaDetails("movie", id);
 
+  const handleClick = (actorId) => {
+    navigate(`/details/person/${actorId}`);
+  };
+
   if (loading) {
-    return <p>Carregando...</p>;
+    return <Spinner />;
   }
 
   return (
@@ -21,7 +30,9 @@ const MovieDetails = ({ id }) => {
       <div className="image-container">
         <img
           className="backdrop"
-          src={imageSrc + media.backdrop_path}
+          src={
+            media.backdrop_path ? imageSrc + media.backdrop_path : defaultImage
+          }
           alt={media.title}
         />
         <div className="details-info">
@@ -51,7 +62,7 @@ const MovieDetails = ({ id }) => {
             <p>Estrelado por: </p>
             {credits &&
               credits.slice(0, 5).map((actor, index, array) => (
-                <span key={actor.id}>
+                <span key={actor.id} onClick={() => handleClick(actor.id)}>
                   {actor.name}
                   {index < array.length - 1 ? ", " : ""}
                 </span>
@@ -60,10 +71,14 @@ const MovieDetails = ({ id }) => {
           <div className="credits-container">
             <p>Produtoras: </p>
             {media?.production_companies &&
-              media.production_companies.map((prod) => (
-                <p key={prod.id}>{prod.name}</p>
+              media.production_companies.map((prod, index, array) => (
+                <span key={prod.id}>
+                  {prod.name}
+                  {index < array.length - 1 ? ", " : ""}
+                </span>
               ))}
           </div>
+
           <div className="providers-container">
             {providers?.flatrate &&
               providers.flatrate.map((prov) => (
@@ -77,22 +92,30 @@ const MovieDetails = ({ id }) => {
           </div>
         </div>
       </div>
-      <div className="trailer-container">
-        <TitleSection title={"Trailer"} />
+      {videos?.results[0]?.key ? (
+        <div className="trailer-container">
+          <TitleSection title={"Trailer"} />
 
-        <YouTubeVideo videoId={videos?.results[0]?.key} />
-      </div>
-      <div className="recommendations-container">
-        <TitleSection title={"Recomendados"} />
-        <Carousel slidesPerView={5} id={"trending-movies"}>
-          {recommendations?.results.length === 0 && <p>Carregando...</p>}
-          {recommendations?.results.map((media) => (
-            <SwiperSlide key={media.id}>
-              <Card media={media} type={"movie"} swiper={true} />
-            </SwiperSlide>
-          ))}
-        </Carousel>
-      </div>
+          <YouTubeVideo videoId={videos?.results[0]?.key} />
+        </div>
+      ) : (
+        <></>
+      )}
+
+      {recommendations?.results.length ? (
+        <div className="recommendations-container">
+          <TitleSection title={"Recomendados"} />
+          <Carousel slidesPerView={5} id={"trending-movies"}>
+            {recommendations?.results.map((media) => (
+              <SwiperSlide key={media.id}>
+                <Card media={media} type={"movie"} swiper={true} />
+              </SwiperSlide>
+            ))}
+          </Carousel>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

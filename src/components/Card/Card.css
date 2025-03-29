@@ -1,3 +1,4 @@
+/* Estilos principais do card */
 .media-card {
   color: var(--text-light);
   display: flex;
@@ -10,13 +11,15 @@
 }
 
 .no-swiper {
-  width: 20%;
+  width: 100%; /* Garante que o card ocupe 100% da largura em telas pequenas */
 }
 
 .media-card img {
   max-width: 100%;
+  width: 100%; /* Garante que a imagem ocupe toda a largura do card */
   transition: 1s;
-  min-height: 25.3rem;
+  object-fit: cover; /* Faz a imagem preencher o espaço */
+  min-height: 25.3rem; /* A altura mínima da imagem */
 }
 
 .media-card img:hover {
@@ -65,4 +68,66 @@
   font-size: 14px;
   font-weight: bold;
   color: var(--primary-color);
+}
+
+/* Responsividade para o card com a classe .no-swiper */
+
+/* Para telas pequenas (max-width: 300px) */
+@media (max-width: 300px) {
+  .no-swiper {
+    width: 100%; /* O card ocupa 100% da largura */
+  }
+  .no-swiper img {
+    min-height: 20rem; /* Altura mínima ajustada para imagens */
+  }
+}
+
+/* Para telas médias (300px a 640px) */
+@media (min-width: 300px) and (max-width: 640px) {
+  .no-swiper {
+    width: 100%; /* O card ocupa 100% da largura */
+  }
+  .no-swiper img {
+    min-height: 22rem; /* Altura mínima ajustada para imagens */
+  }
+}
+
+/* Para telas maiores (640px a 768px) */
+@media (min-width: 640px) and (max-width: 768px) {
+  .no-swiper {
+    width: 50%; /* O card ocupa 50% da largura */
+  }
+  .no-swiper img {
+    min-height: 36rem; /* Altura mínima ajustada para imagens */
+  }
+}
+
+/* Para telas grandes (768px a 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .no-swiper {
+    width: 50%; /* O card ocupa 50% da largura */
+  }
+  .no-swiper img {
+    min-height: 48rem; /* Altura mínima ajustada para imagens */
+  }
+}
+
+/* Para telas muito grandes (1024px a 1440px) */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .no-swiper {
+    width: 25%; /* O card ocupa 25% da largura */
+  }
+  .no-swiper img {
+    min-height: 34rem; /* Altura mínima ajustada para imagens */
+  }
+}
+
+/* Para telas ainda maiores (acima de 1440px) */
+@media (min-width: 1440px) {
+  .no-swiper {
+    width: 20%; /* O card ocupa 20% da largura */
+  }
+  .no-swiper img {
+    min-height: 28rem; /* Altura mínima ajustada para imagens */
+  }
 }

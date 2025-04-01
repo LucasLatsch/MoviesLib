@@ -105,7 +105,7 @@ const MovieDetails = ({ id }) => {
       {recommendations?.results.length ? (
         <div className="recommendations-container">
           <TitleSection title={"Recomendados"} />
-          <Carousel slidesPerView={5} id={"trending-movies"}>
+          <Carousel id={"trending-movies"}>
             {recommendations?.results.map((media) => (
               <SwiperSlide key={media.id}>
                 <Card media={media} type={"movie"} swiper={true} />

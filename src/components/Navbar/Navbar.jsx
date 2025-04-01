@@ -74,7 +74,7 @@ const Navbar = () => {
           <button className="bx-shadow" onClick={handleSubmit}>
             <BiSearchAlt2 />
           </button>
-          <select
+          {/* <select
             className="language-select bx-shadow"
             value={selectedLanguage}
             onChange={(e) => setSelectedLanguage(e.target.value)}
@@ -85,7 +85,7 @@ const Navbar = () => {
                   {lang}
                 </option>
               ))}
-          </select>
+          </select> */}
         </form>
         <ThemeToggle />
       </div>

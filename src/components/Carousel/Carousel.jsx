@@ -17,10 +17,11 @@ const Carousel = ({ children, slidesPerView, spaceBetween, id }) => {
         pagination={{ clickable: true }}
         breakpoints={{
           300: { slidesPerView: 1 },
-          640: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 4 },
-          1440: { slidesPerView: slidesPerView },
+          640: { slidesPerView: 2 },
+          768: { slidesPerView: 3 },
+          1024: { slidesPerView: 5 },
+          1440: { slidesPerView: 5 },
+          2560: { slidesPerView: 6 },
         }}
       >
         {children}

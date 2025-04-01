@@ -19,7 +19,7 @@
   width: 100%; /* Garante que a imagem ocupe toda a largura do card */
   transition: 1s;
   object-fit: cover; /* Faz a imagem preencher o espaço */
-  min-height: 25.3rem; /* A altura mínima da imagem */
+  min-height: 27rem; /* A altura mínima da imagem */
 }
 
 .media-card img:hover {
@@ -118,16 +118,16 @@
     width: 25%; /* O card ocupa 25% da largura */
   }
   .no-swiper img {
-    min-height: 34rem; /* Altura mínima ajustada para imagens */
+    min-height: 33rem;
   }
 }
 
 /* Para telas ainda maiores (acima de 1440px) */
 @media (min-width: 1440px) {
   .no-swiper {
-    width: 20%; /* O card ocupa 20% da largura */
+    width: 25%; /* O card ocupa 20% da largura */
   }
   .no-swiper img {
-    min-height: 28rem; /* Altura mínima ajustada para imagens */
+    min-height: 33.75rem; /* Altura mínima ajustada para imagens */
   }
 }

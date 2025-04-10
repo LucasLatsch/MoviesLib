@@ -29,20 +29,31 @@ const PersonDetails = ({ id }) => {
       <div className="person-info">
         <h1 className="title">{person.name}</h1>
         <div className="person-header">
-          <FaBirthdayCake />
-          <span>{person.birthday}</span>
+          <span>
+            <FaBirthdayCake />
+
+            {person.birthday}
+          </span>
           {person.deathday && (
             <>
               <GiDeathSkull />
               <span>{person.deathdayday}</span>
             </>
           )}
-          <TbChartBarPopular />
-          <span>{person.popularity}</span>
-          <AiFillProfile />
-          <span>{person.known_for_department}</span>
-          <FaLocationDot />
-          <span>{person.place_of_birth}</span>
+          <span>
+            <TbChartBarPopular />
+            {person.popularity}
+          </span>
+          <span>
+            <AiFillProfile />
+
+            {person.known_for_department}
+          </span>
+          <span>
+            <FaLocationDot />
+
+            {person.place_of_birth}
+          </span>
         </div>
         <p>{person.biography}</p>
       </div>

@@ -137,4 +137,80 @@
   gap: 1rem;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 1em;
+}
+
+@media (max-width: 768px) {
+  .details-info {
+    position: static;
+    padding: 1em;
+    background: none;
+    max-width: 100%;
+    min-width: 100%;
+  }
+
+  .image-container {
+    align-items: center;
+  }
+
+  .details-info .title {
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .details-info .tagline,
+  .details-info .preview {
+    font-size: 1em;
+    text-align: center;
+  }
+
+  .genres-container {
+    justify-content: center;
+  }
+
+  .details-header {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .person-info .title {
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .person-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5em;
+  }
+
+  .person-header span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .person-info p {
+    font-size: 1em;
+    line-height: 1.5;
+    text-align: justify;
+    padding: 0 0.5em;
+  }
+
+  .galery,
+  .participation-container {
+    padding: 1em 0.5em;
+  }
+
+  .teste {
+    min-height: 15rem;
+    object-fit: cover;
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+  }
 }
